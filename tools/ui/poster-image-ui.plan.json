@@ -1,0 +1,214 @@
+[
+  {
+    "action": "start",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "capture",
+    "label": "poster-launch"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b  Import an image"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "pickfile",
+    "name": "synthetic.png"
+  },
+  {
+    "action": "capture",
+    "label": "poster-imported"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save project"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-baseline.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-baseline.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Adjust tone curves"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "capture",
+    "label": "poster-curves-open"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "desc": "Midtones output level, 0 to 100"
+    },
+    "scrolls": 3
+  },
+  {
+    "action": "slider",
+    "selector": {
+      "desc": "Midtones output level, 0 to 100"
+    },
+    "fraction": 0.78
+  },
+  {
+    "action": "capture",
+    "label": "poster-staged-curves"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Cancel"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-cancel-curves.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-cancel-curves.png"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "poster-baseline.png",
+    "second": "poster-cancel-curves.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Adjust tone curves"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "desc": "Midtones output level, 0 to 100"
+    },
+    "scrolls": 3
+  },
+  {
+    "action": "slider",
+    "selector": {
+      "desc": "Midtones output level, 0 to 100"
+    },
+    "fraction": 0.78
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Apply"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save project"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-curved.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-curved.png"
+  },
+  {
+    "action": "assert_different_file",
+    "first": "poster-baseline.png",
+    "second": "poster-curved.png"
+  },
+  {
+    "action": "force_stop",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "start",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "capture",
+    "label": "poster-reopened"
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-reopened.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-reopened.png"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "poster-curved.png",
+    "second": "poster-reopened.png"
+  }
+]

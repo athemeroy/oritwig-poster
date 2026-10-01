@@ -1,0 +1,310 @@
+[
+  {
+    "action": "tap",
+    "selector": {
+      "text": "New image"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "exif-5.jpg"
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save project"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-exif-5.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-exif-5.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "New image"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "exif-7.jpg"
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save project"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-exif-7.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-exif-7.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "New image"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "oversized-40mp.png"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Choose an image below 40 megapixels"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "poster-rejected-40mp"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "OK"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-after-40mp.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-after-40mp.png"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "poster-exif-7.png",
+    "second": "poster-after-40mp.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "New image"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "oversized-25mb.jpg"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Choose an image smaller than 25 MB"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "poster-rejected-25mb"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "OK"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-after-25mb.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-after-25mb.png"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "poster-exif-7.png",
+    "second": "poster-after-25mb.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "New image"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "malformed.png"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "This file is not a supported image"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "poster-rejected-malformed"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "OK"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export PNG"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "poster-after-malformed.png"
+  },
+  {
+    "action": "pull",
+    "name": "poster-after-malformed.png"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "poster-exif-7.png",
+    "second": "poster-after-malformed.png"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Caption"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Add a few words\u2026"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "PosterDraftRecovery"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "force_stop",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "start",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "PosterDraftRecovery"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "capture",
+    "label": "poster-dirty-caption-recovered"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Keep your changes?"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "poster-back-dirty-prompt"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Keep editing"
+    },
+    "scrolls": 0
+  }
+]

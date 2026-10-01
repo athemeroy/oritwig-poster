@@ -1,0 +1,35 @@
+[
+  {
+    "action": "start",
+    "package": "dev.appmatrix.poster"
+  },
+  {
+    "action": "capture",
+    "label": "poster-launch"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b  Import an image"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "capture",
+    "label": "poster-system-picker"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Make something worth sharing"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "poster-picker-cancel"
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "action": "start",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "capture",
+    "label": "journal-launch"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b New observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Give this moment a title"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "CI River notes"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "What did you notice?"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "SyntheticJournalText"
+  },
+  {
+    "action": "capture",
+    "label": "journal-keyboard"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Undo notes"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "What did you notice?"
+    }
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Redo notes"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "SyntheticJournalText"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "journal-undo-redo"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "force_stop",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "start",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "CI River notes"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "journal-saved-reopen"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b New observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Give this moment a title"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "CI Dirty recovery"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "What did you notice?"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "Unsaved fixture survives force stop"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "force_stop",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "start",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Continue your draft?"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "journal-dirty-recovery-prompt"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Continue editing"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "CI Dirty recovery"
+    }
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "Unsaved fixture survives force stop"
+    }
+  },
+  {
+    "action": "capture",
+    "label": "journal-dirty-recovered"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Back"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "capture",
+    "label": "journal-back-unsaved"
+  }
+]

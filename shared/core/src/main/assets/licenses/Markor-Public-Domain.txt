@@ -1,0 +1,31 @@
+Markor text undo/redo source notices
+Retrieved and adapted 2026-10-01
+Upstream: https://github.com/gsantner/markor
+Pinned revision: 8d657fd20fff71719d782a3bc375c6f982d09b19
+
+TextViewUndoRedo.java
+app/src/main/java/net/gsantner/opoc/frontend/textview/TextViewUndoRedo.java
+The file header names no individual copyright holder. Its exact dedication:
+/*
+ * THIS CLASS IS PROVIDED TO THE PUBLIC DOMAIN FOR FREE WITHOUT ANY
+ * RESTRICTIONS OR ANY WARRANTY.
+ */
+
+TextViewUtils.java (only findDiff adapted)
+app/src/main/java/net/gsantner/markor/frontend/textview/TextViewUtils.java
+Exact upstream header:
+/*#######################################################
+ *
+ * SPDX-FileCopyrightText: 2018-2025 Gregor Santner <gsantner AT mailbox DOT org>
+ * SPDX-License-Identifier: Unlicense OR CC0-1.0
+ *
+ * Written 2018-2025 by Gregor Santner <gsantner AT mailbox DOT org>
+ * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
+ * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+#########################################################*/
+
+App Matrix selects the Unlicense option for the findDiff adaptation.
+The full Unlicense and CC0 texts are included alongside this notice.
+The explicit public-domain dedication above applies to TextViewUndoRedo.java;
+it is not an Apache-2.0 or GPL grant by the upstream file.
+App Matrix's own modifications are GPL-3.0-or-later.

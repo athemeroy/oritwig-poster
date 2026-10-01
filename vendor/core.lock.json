@@ -1,0 +1,155 @@
+{
+  "commit": "6e6bf168a49d4f68645bd55210a59e17f82deef7",
+  "consumer": "poster",
+  "files": [
+    {
+      "path": "shared/core/build.gradle",
+      "sha256": "7d89a0dfa0b017c05ce720468221f40b988f44f18a39a8948f46f75e7d749765"
+    },
+    {
+      "path": "shared/core/src/main/AndroidManifest.xml",
+      "sha256": "343d5be1ac17cdd45d1a2f2ddc616c509290e655869125a9422a96d88aa66066"
+    },
+    {
+      "path": "shared/core/src/main/assets/licenses/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "shared/core/src/main/assets/licenses/Markor-CC0-1.0.txt",
+      "sha256": "7179683e8000e6bdc9bbc60d85edf0a4ac8e76f951857f54fcb775d5886f1309"
+    },
+    {
+      "path": "shared/core/src/main/assets/licenses/Markor-Public-Domain.txt",
+      "sha256": "994b79a44a7c4314210a0f507e8fa8cee4964510cbaa0686cca4dbd1f4ae22a3"
+    },
+    {
+      "path": "shared/core/src/main/assets/licenses/Markor-Unlicense.txt",
+      "sha256": "de60040d7dbf58ff18e70546e144a8546e109f90c160fa5d2857484933f57101"
+    },
+    {
+      "path": "shared/core/src/main/assets/licenses/Telegram-GPL-2.0.txt",
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/About.java",
+      "sha256": "04e90d778115b6c6484c05e6f4b0e69fc1f8e2efd2a5a8b35478c24d900792b1"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/BitmapTransforms.java",
+      "sha256": "e8fe93d0cec071f0530a0e5f7b474b72b2132717da26fa360a3e52f0a69eb488"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/CurveMap.java",
+      "sha256": "91db1073d56ee7db4a008eadbd3699bbfe52db2c890f63683725419e2b8f983c"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/MediaFiles.java",
+      "sha256": "100dec786c111d5b9048a1e5ba35a65b1a6d1bfa49b4705cc3f0435f62ea9fed"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/PhotoAdjustments.java",
+      "sha256": "8720f7a0c0f0074104a760fb5c0dd8b9ed3ca10b0ead4dff4432c03c4b8173cb"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/PhotoFilterCurvesControl.java",
+      "sha256": "493931859e38c6bc6103702d61fd47915f463ba5f3372d46d6dea5cf36f2228b"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/Settings.java",
+      "sha256": "42f7c7da1af5fd3eb023b4b410c3e2ae0eb2594480868f2cfcbf52c230b3c499"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/Theme.java",
+      "sha256": "eafe71231195d738fd6042bd685f32d738a593edc9694dca0a2dd0b4c8fefa2d"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/ToneCurves.java",
+      "sha256": "18b7489144221ea7b974135058166d8c214310f291ec8257bd4306a27b24b6a6"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/text/EditHistory.java",
+      "sha256": "d4a05fe538a901b95a2cb59b8abed9f844cc8dcb7a2d656b2c7a76bc130637da"
+    },
+    {
+      "path": "shared/core/src/main/java/dev/appmatrix/core/text/TextUndoController.java",
+      "sha256": "c9d3b2d65cef871c66ef47c222cd6e3cf654e5b8d27f3b79f573a9f0cc89a25e"
+    },
+    {
+      "path": "shared/core/src/test/java/dev/appmatrix/core/TelegramCurveParityTest.java",
+      "sha256": "c9360cf79485d2c858b7a778c5cfb530f49309b6d9197c9174f93e432255af6c"
+    },
+    {
+      "path": "shared/core/src/test/java/dev/appmatrix/core/text/EditHistoryTest.java",
+      "sha256": "ee02a7be2f2d89caf0aaf922d021061d87e8ecb4bd6e71b33d72cca51febf91c"
+    },
+    {
+      "path": "shared/core/src/test/resources/telegram-curves/GenerateVectors.java.txt",
+      "sha256": "02d0e4c1217de5532844fd097cec32d2a0eb3da80227e12c6e2abf42eed82ddf"
+    },
+    {
+      "path": "shared/core/src/test/resources/telegram-curves/README.md",
+      "sha256": "942a16f14906dab09e836b7cb88f891bf2522628c9a4f858179c483f6f3e3cd4"
+    },
+    {
+      "path": "shared/core/src/test/resources/telegram-curves/cpu-vectors.txt",
+      "sha256": "c199cb4955bf8a86c70da750d5523f80822e672de18807478abb83fe9b09f4d5"
+    },
+    {
+      "path": "shared/core/src/test/resources/telegram-curves/regenerate.py",
+      "sha256": "afd08fec8b222478da75eaf5d646f7371871ac1352a87df27f176f9811ff5c31"
+    },
+    {
+      "path": "shared/core/src/test/resources/telegram-curves/upstream-vectors.txt",
+      "sha256": "08dfc567167803e26fa6126894835f754a13d668afb3d12ccbca642757f65be0"
+    }
+  ],
+  "notices": [
+    {
+      "path": "vendor/core-LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "vendor/core-NOTICE",
+      "sha256": "23b467717efbaccb4231005f50ed40f72cd14f1a3663d6ef7f26235a5e5a3590"
+    },
+    {
+      "path": "vendor/core-README.md",
+      "sha256": "1482049571216db04df1edec56983156d990f41a3ebe6b9c3431a79feceee941"
+    },
+    {
+      "path": "third_party/MARKOR.md",
+      "sha256": "cc501326c2108ebe02b1e9468e5c24a970de9d2380bcaa66a3326a739ca50e41"
+    },
+    {
+      "path": "third_party/TELEGRAM.md",
+      "sha256": "5dc4e4c40afa07f291ae74a9798626ea34eab54f7233ba810c5e6bd6b213fb9d"
+    },
+    {
+      "path": "third_party/gradle/LICENSE",
+      "sha256": "9536d88ea948603d18e232a13f5958d67807cd80828036b082bff171d2cf0703"
+    },
+    {
+      "path": "third_party/gradle/NOTICE",
+      "sha256": "c2de5fd9adc7ccc4e1382a0e1f38ec6e14f8ca6e28d3c20289fe80353b019aa1"
+    },
+    {
+      "path": "third_party/licenses/Markor-CC0-1.0.txt",
+      "sha256": "7179683e8000e6bdc9bbc60d85edf0a4ac8e76f951857f54fcb775d5886f1309"
+    },
+    {
+      "path": "third_party/licenses/Markor-Public-Domain.txt",
+      "sha256": "994b79a44a7c4314210a0f507e8fa8cee4964510cbaa0686cca4dbd1f4ae22a3"
+    },
+    {
+      "path": "third_party/licenses/Markor-Unlicense.txt",
+      "sha256": "de60040d7dbf58ff18e70546e144a8546e109f90c160fa5d2857484933f57101"
+    },
+    {
+      "path": "third_party/licenses/Telegram-GPL-2.0.txt",
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    }
+  ],
+  "repository": "https://github.com/athemeroy/oritwig-core.git",
+  "schema": 1,
+  "source_tree": "ee8c1443e8d932eafbd67698c75bc0c4778117e5"
+}

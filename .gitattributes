@@ -1,0 +1,2 @@
+# Keep vendored source and source-lock bytes identical on every checkout platform.
+* -text

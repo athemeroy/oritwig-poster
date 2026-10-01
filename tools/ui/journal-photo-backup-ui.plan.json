@@ -1,0 +1,468 @@
+[
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b New observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Give this moment a title"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "CI Photo observation"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "What did you notice?"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "Synthetic image for backup validation"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Add photo"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "pickfile",
+    "name": "exif-1.jpg"
+  },
+  {
+    "action": "capture",
+    "label": "journal-photo-imported"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export current photo"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "journal-baseline.jpg"
+  },
+  {
+    "action": "pull",
+    "name": "journal-baseline.jpg"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Adjust light & color curves"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "capture",
+    "label": "journal-curves"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "desc": "Midtones"
+    },
+    "scrolls": 3
+  },
+  {
+    "action": "slider",
+    "selector": {
+      "desc": "Midtones"
+    },
+    "fraction": 0.78
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Cancel"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export current photo"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "journal-cancel-curves.jpg"
+  },
+  {
+    "action": "pull",
+    "name": "journal-cancel-curves.jpg"
+  },
+  {
+    "action": "assert_same_file",
+    "first": "journal-baseline.jpg",
+    "second": "journal-cancel-curves.jpg"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Adjust light & color curves"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "desc": "Midtones"
+    },
+    "scrolls": 3
+  },
+  {
+    "action": "slider",
+    "selector": {
+      "desc": "Midtones"
+    },
+    "fraction": 0.78
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Apply"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export current photo"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "journal-curved.jpg"
+  },
+  {
+    "action": "pull",
+    "name": "journal-curved.jpg"
+  },
+  {
+    "action": "assert_different_file",
+    "first": "journal-baseline.jpg",
+    "second": "journal-curved.jpg"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Rotate clockwise"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Photo tools"
+    },
+    "scrolls": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export current photo"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "journal-rotated.jpg"
+  },
+  {
+    "action": "pull",
+    "name": "journal-rotated.jpg"
+  },
+  {
+    "action": "top",
+    "count": 4
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "More"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Export backup"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "capture",
+    "label": "journal-backup-warning"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Choose destination"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "save_document",
+    "name": "journal-roundtrip.fjbackup"
+  },
+  {
+    "action": "pull",
+    "name": "journal-roundtrip.fjbackup"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "\uff0b New observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Give this moment a title"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "text",
+    "value": "After backup only"
+  },
+  {
+    "action": "key",
+    "key": "KEYCODE_BACK"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Save observation"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "4 observations \u00b7 On this device"
+    },
+    "exists": true
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "More"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Restore backup"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "pickfile",
+    "name": "journal-roundtrip.fjbackup"
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "capture",
+    "label": "journal-restore-preview"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Cancel"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "4 observations \u00b7 On this device"
+    },
+    "exists": true
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "After backup only"
+    },
+    "exists": true
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "More"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Restore backup"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "pickfile",
+    "name": "journal-roundtrip.fjbackup"
+  },
+  {
+    "action": "wait",
+    "seconds": 2
+  },
+  {
+    "action": "capture",
+    "label": "journal-restore-preview"
+  },
+  {
+    "action": "tap",
+    "selector": {
+      "text": "Replace journal"
+    },
+    "scrolls": 0
+  },
+  {
+    "action": "wait",
+    "seconds": 3
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "3 observations \u00b7 On this device"
+    },
+    "exists": true
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "After backup only"
+    },
+    "exists": false
+  },
+  {
+    "action": "capture",
+    "label": "journal-restored"
+  },
+  {
+    "action": "force_stop",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "start",
+    "package": "dev.appmatrix.journal"
+  },
+  {
+    "action": "assert",
+    "selector": {
+      "text": "3 observations \u00b7 On this device"
+    },
+    "exists": true
+  },
+  {
+    "action": "capture",
+    "label": "journal-restore-reopened"
+  }
+]

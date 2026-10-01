@@ -1,0 +1,180 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+import java.nio.*;
+import java.security.*;
+import java.util.*;
+
+/**
+ * Fixture generation only: consumes the verbatim pinned Telegram nested models. HSL reference uses
+ * independent chroma/sector formulas, not CurveMap's hue helper.
+ */
+public class GenerateVectors {
+  static final String[] NAMES = {
+    "identity", "lift", "invert", "saw", "plateau", "fraction", "black", "white"
+  };
+  static final float[][] POINTS = {
+    {0, 25, 50, 75, 100},
+    {12, 38, 64, 89, 96},
+    {100, 75, 50, 25, 0},
+    {0, 100, 0, 100, 0},
+    {0, 50, 50, 50, 100},
+    {3.125f, 91.75f, 28.5f, 67.25f, 99.125f},
+    {0, 0, 0, 0, 0},
+    {100, 100, 100, 100, 100}
+  };
+
+  static PinnedTelegram.CurvesValue curve(float[] p) {
+    PinnedTelegram.CurvesValue c = new PinnedTelegram.CurvesValue();
+    c.blacksLevel = p[0];
+    c.shadowsLevel = p[1];
+    c.midtonesLevel = p[2];
+    c.highlightsLevel = p[3];
+    c.whitesLevel = p[4];
+    return c;
+  }
+
+  static String bits(float[] values) {
+    StringJoiner s = new StringJoiner(",");
+    for (float v : values) s.add(String.format(Locale.ROOT, "%08x", Float.floatToRawIntBits(v)));
+    return s.toString();
+  }
+
+  static String hash(float[] values) throws Exception {
+    ByteBuffer b = ByteBuffer.allocate(values.length * 4).order(ByteOrder.LITTLE_ENDIAN);
+    for (float v : values) b.putFloat(v);
+    StringBuilder s = new StringBuilder();
+    for (byte x : MessageDigest.getInstance("SHA-256").digest(b.array()))
+      s.append(String.format(Locale.ROOT, "%02x", x & 255));
+    return s.toString();
+  }
+
+  static int[] table(float[] p) {
+    float[] f = curve(p).getDataPoints();
+    int[] out = new int[f.length];
+    for (int i = 0; i < f.length; i++) out[i] = (int) (f[i] * 255);
+    return out;
+  }
+
+  static double at(int[] table, double unit) {
+    return table[Math.max(0, Math.min(199, (int) Math.floor(unit * 200)))] / 255.0;
+  }
+
+  static double smooth(double a, double b, double x) {
+    double t = Math.max(0, Math.min(1, (x - a) / (b - a)));
+    return t * t * (3 - 2 * t);
+  }
+
+  static int map(int argb, int[][] tables, boolean identity) {
+    if (identity) return argb;
+    double r = ((argb >>> 16) & 255) / 255.0,
+        g = ((argb >>> 8) & 255) / 255.0,
+        b = (argb & 255) / 255.0;
+    double max = Math.max(r, Math.max(g, b)), min = Math.min(r, Math.min(g, b)), chroma = max - min;
+    double lightness = (max + min) / 2, hueSector = 0, saturation = 0;
+    if (chroma != 0) {
+      saturation = chroma / (1 - Math.abs(2 * lightness - 1));
+      if (max == r) hueSector = (g - b) / chroma;
+      else if (max == g) hueSector = 2 + (b - r) / chroma;
+      else hueSector = 4 + (r - g) / chroma;
+      if (hueSector < 0) hueSector += 6;
+    }
+    saturation *= smooth(0, .1, lightness) * (1 - smooth(.8, 1, lightness));
+    double mapped = at(tables[0], lightness);
+    double c = (1 - Math.abs(2 * mapped - 1)) * saturation,
+        x = c * (1 - Math.abs(hueSector % 2 - 1)),
+        m = mapped - c / 2;
+    double[] rgb;
+    switch ((int) hueSector) {
+      case 0:
+        rgb = new double[] {c, x, 0};
+        break;
+      case 1:
+        rgb = new double[] {x, c, 0};
+        break;
+      case 2:
+        rgb = new double[] {0, c, x};
+        break;
+      case 3:
+        rgb = new double[] {0, x, c};
+        break;
+      case 4:
+        rgb = new double[] {x, 0, c};
+        break;
+      default:
+        rgb = new double[] {c, 0, x};
+    }
+    int out = argb & 0xff000000;
+    for (int channel = 0; channel < 3; channel++)
+      out |=
+          (int) Math.round(at(tables[channel + 1], rgb[channel] + m) * 255) << (16 - channel * 8);
+    return out;
+  }
+
+  public static void main(String[] args) throws Exception {
+    if (args.length == 0) {
+      System.out.println(
+          "# Upstream PhotoFilterView.java f2908b14133bbffbf7ab04f641ecb5bfaf533242; float bits,"
+              + " little-endian path SHA-256");
+      for (int i = 0; i < NAMES.length; i++) {
+        PinnedTelegram.CurvesValue c = curve(POINTS[i]);
+        float[] path = c.interpolateCurve();
+        StringJoiner p = new StringJoiner(",");
+        for (float v : POINTS[i]) p.add(Float.toString(v));
+        System.out.println(
+            NAMES[i]
+                + "|"
+                + p
+                + "|"
+                + bits(c.getDataPoints())
+                + "|"
+                + path.length
+                + "|"
+                + hash(path));
+      }
+    } else {
+      int[][] schemes = {
+        {0, 0, 0, 0}, {1, 0, 0, 0}, {2, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1},
+        {1, 2, 5, 4}, {5, 3, 1, 2}, {6, 0, 0, 0}, {7, 0, 0, 0}
+      };
+      int[] inputs = {
+        0xff000000,
+        0xffffffff,
+        0xffff0000,
+        0xff00ff00,
+        0xff0000ff,
+        0xffffff00,
+        0xffff00ff,
+        0xff00ffff,
+        0xff808080,
+        0xff404040,
+        0xff101010,
+        0xffe0e0e0,
+        0xff080402,
+        0xff180c06,
+        0xfffef0e0,
+        0xffe0f0fe,
+        0xffcc6633,
+        0xff3366cc,
+        0xff639c41,
+        0xffa851c3,
+        0x00010203,
+        0x017faac9,
+        0x7f357ac0,
+        0x80de9137,
+        0xfec18352
+      };
+      System.out.println(
+          "# Curves-only CPU contract: pinned upstream tables; independent double chroma/sector"
+              + " HSL, nearest index floor(v*200), truncating UNORM8 samples");
+      for (int i = 0; i < schemes.length; i++) {
+        int[][] ts = new int[4][];
+        StringJoiner ns = new StringJoiner(",");
+        for (int c = 0; c < 4; c++) {
+          ts[c] = table(POINTS[schemes[i][c]]);
+          ns.add(NAMES[schemes[i][c]]);
+        }
+        for (int argb : inputs)
+          System.out.printf(Locale.ROOT, "%s|%08x|%08x%n", ns, argb, map(argb, ts, i == 0));
+      }
+    }
+  }
+}

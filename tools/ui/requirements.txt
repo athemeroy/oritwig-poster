@@ -1,0 +1,2 @@
+# Test fixture generation and independent raster inspection only; not bundled in APKs.
+Pillow==12.3.0

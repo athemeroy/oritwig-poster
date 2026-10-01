@@ -1,0 +1,1 @@
+The shared/core directory is an exact, immutable source snapshot from Oritwig Core. core.lock.json is generated only after its upstream commit is published; tools/verify-core.py rejects absent, unpinned or modified source. There is no sibling-checkout dependency.

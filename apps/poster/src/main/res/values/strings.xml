@@ -1,0 +1,7 @@
+<resources>
+    <string name="unsaved_draft">Unsaved changes · Draft kept on this device</string>
+    <string name="draft_failed">Draft not saved: %1$s</string>
+    <string name="project_saved">Saved · You can reopen and edit this project</string>
+    <string name="updating_preview">Updating preview…</string>
+    <string name="curve_level">%1$s  %2$d</string>
+</resources>

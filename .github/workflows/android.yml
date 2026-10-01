@@ -1,0 +1,89 @@
+name: Oritwig poster
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: android-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Build ${{ matrix.app }} independently
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [poster]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install verified JDK
+        run: |
+          ./tools/setup-jdk.sh "$RUNNER_TEMP/app-matrix-jdk"
+          echo "JAVA_HOME=$RUNNER_TEMP/app-matrix-jdk" >> "$GITHUB_ENV"
+          echo "$RUNNER_TEMP/app-matrix-jdk/bin" >> "$GITHUB_PATH"
+      - name: Verify wrapper and installed SDK
+        run: |
+          ./tools/verify-wrapper.sh
+          test -f "$ANDROID_HOME/platforms/android-35/android.jar"
+          test -x "$ANDROID_HOME/build-tools/35.0.0/aapt2"
+          java -version
+          ./gradlew --version
+      - name: Build, lint, test and package matching source
+        run: ./tools/package-artifacts.sh '${{ matrix.app }}'
+      - name: Upload installable debug APK, unsigned release and source
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ matrix.app }}-${{ github.sha }}
+          path: artifacts/${{ matrix.app }}/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload test and lint reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: reports-${{ matrix.app }}-${{ github.sha }}
+          path: |
+            apps/${{ matrix.app }}/build/reports/
+            shared/core/build/reports/
+          if-no-files-found: warn
+          retention-days: 14
+  native-tests:
+    name: Native Android API 35 tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Check existing KVM access without changing permissions
+        run: |
+          id
+          ls -l /dev/kvm
+          test -r /dev/kvm && test -w /dev/kvm
+      - name: Install verified JDK
+        run: |
+          ./tools/setup-jdk.sh "$RUNNER_TEMP/app-matrix-jdk"
+          echo "JAVA_HOME=$RUNNER_TEMP/app-matrix-jdk" >> "$GITHUB_ENV"
+          echo "$RUNNER_TEMP/app-matrix-jdk/bin" >> "$GITHUB_PATH"
+      - name: Install verified SDK command-line tools in an isolated directory
+        run: |
+          echo "ANDROID_HOME=$RUNNER_TEMP/app-matrix-android-sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$RUNNER_TEMP/app-matrix-android-sdk" >> "$GITHUB_ENV"
+          ANDROID_HOME="$RUNNER_TEMP/app-matrix-android-sdk" ANDROID_SDK_ROOT="$RUNNER_TEMP/app-matrix-android-sdk" ./tools/setup-android-sdk.sh --accept-sdk-license
+      - name: Boot authorized KVM emulator and run native suite
+        run: ./tools/ci-emulator-tests.sh poster
+      - name: Upload native assertions, launcher screenshots and diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: native-api35-${{ github.sha }}
+          path: artifacts/runtime/
+          if-no-files-found: warn
+          retention-days: 14
