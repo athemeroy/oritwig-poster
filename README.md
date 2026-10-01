@@ -1,6 +1,8 @@
 # Oritwig Poster · Pocket Poster
 
-A complete, independent Android application to compose local images, retain editable projects, and export PNG. Part of [Oritwig · 源枝](https://github.com/athemeroy/app-matrix).
+> **Superseded development preview.** This repository is preserved for source history and is not part of the current upstream-first Oritwig product releases. See the [current catalog](https://github.com/athemeroy/app-matrix).
+
+An earlier independent Android development preview to compose local images, retain editable projects, and export PNG. Part of [Oritwig · 源枝](https://github.com/athemeroy/app-matrix).
 
 > Development preview. Build/unit checks and native/UI acceptance are reported separately by CI. Debug APKs are testing builds; unsigned release APKs require the distributor's own signing key.
 
